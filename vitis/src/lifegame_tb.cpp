@@ -24,7 +24,7 @@ int read_cells(const char* filename, int cells[SIZE * SIZE]) {
 	return 0;
 }
 
-int main() {
+int main(int argc, char** argv) {
 
 	int ini[SIZE * SIZE];
 
@@ -40,13 +40,13 @@ int main() {
 		return 1;
 	}
 
-	hls::stream<pkt> in, out;
+	fifo<axis_data> in, out;
 
 	for (int i = 0; i < SIZE * SIZE; i++) {
-		pkt v;
-		v.data = ini[i];
-		if (i == SIZE * SIZE - 1) v.last = 1;
-		in.write(v);
+		axis_data pkt;
+		pkt.data = ini[i];
+		pkt.last = (i == SIZE * SIZE - 1) ? 1 : 0;
+		in.write(pkt);
 	}
 
 	for (int c = 0; c < 4; c++) {
@@ -54,17 +54,17 @@ int main() {
 		lifegame(in, out);
 
 		for (int i = 0; i < SIZE * SIZE; i++) {
-			pkt v = out.read();
-			in.write(v);
+			axis_data pkt = out.read();
+			in.write(pkt);
 		}
 	}
 
 	//Compare results
 	for (int i = 0; i < SIZE * SIZE; i++) {
-		pkt v = in.read();
+		axis_data pkt = in.read();
 		int last = (i == SIZE * SIZE - 1) ? 1 : 0;
-		if (v.data != exp[i] || v.last != last) {
-			printf("ERROR HW and SW results mismatch\n");
+		if (pkt.data != exp[i] || pkt.last != last) {
+			printf("ERROR HW and SW results mismatch [%d] expected=%d actual=%d\n", i, exp[i], pkt.data);
 			return 1;
 		}
 	}
