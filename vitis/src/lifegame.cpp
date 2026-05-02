@@ -6,16 +6,17 @@ int live_or_die(win_t& winb) {
 	return (tt == 0 || (tt ^ winb[4]) == 0) ? 1 : 0;
 }
 
-void windowize_input(fifo<axis_data>& ins, fifo<win_t>& outs) {
+void windowize_input(fifo<axis_data>& ins, fifo<axis_data>& outs) {
 	linebuf_t linebuf;
 	linebuf.reset(SIZE + 2);
 
+	axis_data pkt;
 	windowize_h: for (int y = -1; y < SIZE + 1; y++) {
 		windowize_w: for (int x = -1; x < SIZE + 1; x++) {
 			// input
 			data_t val;
 			if (0 <= x && x < SIZE && 0 <= y && y < SIZE) {
-				axis_data pkt = ins.read();
+				pkt = ins.read();
 				val = pkt.data;
 			} else {
 				val = 0;
@@ -29,30 +30,32 @@ void windowize_input(fifo<axis_data>& ins, fifo<win_t>& outs) {
  			// output
 			if (1 <= x && 1 <= y) {
 				win_t winb = linebuf.get_window();
-				outs.write(winb);
+				pkt.data = live_or_die(winb);
+				pkt.last = (x == SIZE && y == SIZE) ? 1 : 0;
+				outs.write(pkt);
 			}
 		}
 	}
 }
 
-void compute_output(fifo<win_t>& ins, fifo<axis_data>& outs) {
-	compute_hw: for (int i = 0; i < SIZE * SIZE; i++) {
-		win_t winb = ins.read();
-		axis_data pkt;
-		pkt.data = live_or_die(winb);
-		pkt.last = (i == SIZE * SIZE - 1) ? 1 : 0;
-		outs.write(pkt);
-	}
-}
+//void compute_output(fifo<win_t>& ins, fifo<axis_data>& outs) {
+//	compute_hw: for (int i = 0; i < SIZE * SIZE; i++) {
+//		win_t winb = ins.read();
+//		axis_data pkt;
+//		pkt.data = live_or_die(winb);
+//		pkt.last = (i == SIZE * SIZE - 1) ? 1 : 0;
+//		outs.write(pkt);
+//	}
+//}
 
 void lifegame(fifo<axis_data>& in, fifo<axis_data>& out) {
 #pragma HLS interface axis port=in
 #pragma HLS interface axis port=out
 #pragma HLS interface ap_ctrl_none port=return
 
-	fifo<win_t> pips("pipe_fifo");
+//	fifo<win_t> pips("pipe_fifo");
 
-#pragma HLS dataflow
-	windowize_input(in, pips);
-	compute_output(pips, out);
+//#pragma HLS dataflow
+	windowize_input(in, out);
+//	compute_output(pips, out);
 }

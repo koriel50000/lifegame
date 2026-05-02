@@ -24,7 +24,7 @@ const int KERNEL = 3;
 
 using data_t = int;
 using win_t = hls::vector<data_t, KERNEL * KERNEL>;
-using linebuf_t = LineBuffer<SIZE * 2, KERNEL, data_t, win_t>;
+using linebuf_t = LineBuffer<256, KERNEL, data_t, win_t>; // 128 < SIZE + 2 < 256
 template <typename T>
 using fifo = hls::stream<T>;
 
