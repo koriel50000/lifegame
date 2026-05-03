@@ -1,5 +1,5 @@
 INFO: [HLS 200-10] Running 'D:/Products/Xilinx/Vitis_HLS/2022.1/bin/unwrapped/win64.o/vitis_hls.exe'
-INFO: [HLS 200-10] For user 'jzw00' on host 'antec' (Windows NT_amd64 version 6.2) on Sun May 03 10:18:04 +0900 2026
+INFO: [HLS 200-10] For user 'jzw00' on host 'antec' (Windows NT_amd64 version 6.2) on Sun May 03 19:06:34 +0900 2026
 INFO: [HLS 200-10] In directory 'D:/workspace/Vitis/lifegame'
 Sourcing Tcl script 'D:/workspace/Vitis/lifegame/vitis/solution1/export.tcl'
 INFO: [HLS 200-1510] Running: source D:/workspace/Vitis/lifegame/vitis/solution1/export.tcl
@@ -45,11 +45,11 @@ INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source run_ippack.tcl -notrace
-ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1265.773 ; gain = 0.000
+ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1265.035 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Products/Xilinx/Vivado/2022.1/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Sun May  3 10:18:21 2026...
+INFO: [Common 17-206] Exiting Vivado at Sun May  3 19:06:51 2026...
 INFO: [HLS 200-802] Generated output file vitis/solution1/impl/export.zip
-INFO: [HLS 200-111] Finished Command export_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 16.058 seconds; current allocated memory: 367.863 MB.
-INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 2 seconds. Total elapsed time: 18.063 seconds; peak allocated memory: 1.109 GB.
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 15.774 seconds; current allocated memory: 380.473 MB.
+INFO: [HLS 200-112] Total CPU user time: 3 seconds. Total CPU system time: 2 seconds. Total elapsed time: 17.687 seconds; peak allocated memory: 1.107 GB.

@@ -22,16 +22,20 @@ for i in range(SIZE * SIZE):
 
 for j in range(LOOP // 2):
     dma.sendchannel.transfer(odd_buffer[:half])
+    dma.sendchannel.wait()
     dma.sendchannel.transfer(odd_buffer[half:])
     dma.sendchannel.wait()
     dma.recvchannel.transfer(even_buffer[:half])
+    dma.recvchannel.wait()
     dma.recvchannel.transfer(even_buffer[half:])
     dma.recvchannel.wait()
     
     dma.sendchannel.transfer(even_buffer[:half])
+    dma.sendchannel.wait()
     dma.sendchannel.transfer(even_buffer[half:])
     dma.sendchannel.wait()
     dma.recvchannel.transfer(odd_buffer[:half])
+    dma.recvchannel.wait()
     dma.recvchannel.transfer(odd_buffer[half:])
     dma.recvchannel.wait()
 

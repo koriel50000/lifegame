@@ -49,7 +49,7 @@ void compute_output(fifo<win_t>& ins, fifo<axis_data>& outs) {
 		pkt.data = live_or_die(winb);
 		pkt.keep = 0xff;
 		pkt.strb = 0xff;
-		pkt.last = (i == SIZE * SIZE - 1) ? 1 : 0;
+		pkt.last = (i == SIZE * SIZE / 2 - 1 || i == SIZE * SIZE - 1) ? 1 : 0;
 		outs.write(pkt);
 	}
 }

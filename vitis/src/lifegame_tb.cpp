@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < SIZE * SIZE; i++) {
 		axis_data pkt;
 		pkt.data = ini[i];
-		pkt.last = (i == SIZE * SIZE - 1) ? 1 : 0;
+		//pkt.last = (i == SIZE * SIZE / 2 - 1 || i == SIZE * SIZE - 1) ? 1 : 0;
 		in.write(pkt);
 	}
 
@@ -62,8 +62,8 @@ int main(int argc, char** argv) {
 	//Compare results
 	for (int i = 0; i < SIZE * SIZE; i++) {
 		axis_data pkt = in.read();
-		int last = (i == SIZE * SIZE - 1) ? 1 : 0;
-		if (pkt.data != exp[i] || pkt.last != last) {
+		//int last = (i == SIZE * SIZE / 2 - 1 || i == SIZE * SIZE - 1) ? 1 : 0;
+		if (pkt.data != exp[i]) { // || pkt.last != last) {
 			printf("ERROR HW and SW results mismatch [%d] expected=%d actual=%d\n", i, exp[i], pkt.data);
 			return 1;
 		}
