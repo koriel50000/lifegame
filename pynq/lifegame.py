@@ -12,8 +12,8 @@ SIZE=128
 LOOP=2474
 t0 = time.time()
 
-odd_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint32)
-even_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint32)
+odd_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint64)
+even_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint64)
 
 init = np.loadtxt('init.txt').ravel()
 for i in range(SIZE * SIZE):

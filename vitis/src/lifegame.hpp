@@ -17,12 +17,12 @@
 #define AXIS_ENABLE_USER 0b01000000
 
 // @see ug1399, HLS Programmers Guide > Customizing-AXI4-Stream-Interfaces
-using axis_data = ap_axis<32, 0, 0, 0>; // ap_axis<64, 0, 0, 0, (AXIS_ENABLE_DATA | AXIS_ENABLE_LAST), true>;
+using axis_data = ap_axis<64, 0, 0, 0>; // ap_axis<64, 0, 0, 0, (AXIS_ENABLE_DATA | AXIS_ENABLE_LAST), true>;
 
 const int SIZE = 128;
 const int KERNEL = 3;
 
-using data_t = int;
+using data_t = uint64_t;
 using block_data_t = data_t[SIZE * SIZE];
 using win_t = hls::vector<data_t, KERNEL * KERNEL>;
 using linebuf_t = LineBuffer<256, KERNEL, data_t, win_t>; // 128 < SIZE + 2 < 256
