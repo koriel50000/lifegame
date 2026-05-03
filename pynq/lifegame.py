@@ -14,19 +14,24 @@ t0 = time.time()
 
 odd_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint64)
 even_buffer = allocate(shape=(SIZE*SIZE,), dtype=np.uint64)
+half = SIZE * SIZE // 2
 
 init = np.loadtxt('init.txt').ravel()
 for i in range(SIZE * SIZE):
     odd_buffer[i] = init[i]
 
-for i in range(LOOP // 2):
-    dma.sendchannel.transfer(odd_buffer)
-    dma.recvchannel.transfer(even_buffer)
+for j in range(LOOP // 2):
+    dma.sendchannel.transfer(odd_buffer[:half])
+    dma.sendchannel.transfer(odd_buffer[half:])
+    dma.recvchannel.transfer(even_buffer[:half])
+    dma.recvchannel.transfer(even_buffer[half:])
     dma.sendchannel.wait()
     dma.recvchannel.wait()
     
-    dma.sendchannel.transfer(even_buffer)
-    dma.recvchannel.transfer(odd_buffer)
+    dma.recvchannel.transfer(even_buffer[:half])
+    dma.recvchannel.transfer(even_buffer[half:])
+    dma.sendchannel.transfer(odd_buffer[:half])
+    dma.sendchannel.transfer(odd_buffer[half:])
     dma.sendchannel.wait()
     dma.recvchannel.wait()
 
