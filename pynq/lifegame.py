@@ -30,14 +30,14 @@ for j in range(LOOP // 2):
     dma.recvchannel.transfer(even_buffer[half:])
     dma.recvchannel.wait()
     
-    dma.recvchannel.transfer(even_buffer[:half])
-    dma.recvchannel.wait()
-    dma.recvchannel.transfer(even_buffer[half:])
-    dma.recvchannel.wait()
-    dma.sendchannel.transfer(odd_buffer[:half])
+    dma.sendchannel.transfer(even_buffer[:half])
     dma.sendchannel.wait()
-    dma.sendchannel.transfer(odd_buffer[half:])
+    dma.sendchannel.transfer(even_buffer[half:])
     dma.sendchannel.wait()
+    dma.recvchannel.transfer(odd_buffer[:half])
+    dma.recvchannel.wait()
+    dma.recvchannel.transfer(odd_buffer[half:])
+    dma.recvchannel.wait()
 
 print(' '.join(str(_) for _ in odd_buffer))
 passed = True
