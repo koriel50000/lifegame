@@ -23,6 +23,7 @@ const int SIZE = 128;
 const int KERNEL = 3;
 
 using data_t = int;
+using block_data_t = data_t[SIZE * SIZE];
 using win_t = hls::vector<data_t, KERNEL * KERNEL>;
 using linebuf_t = LineBuffer<256, KERNEL, data_t, win_t>; // 128 < SIZE + 2 < 256
 template <typename T>
