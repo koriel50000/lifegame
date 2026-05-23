@@ -28,14 +28,14 @@ int main(int argc, char** argv) {
 
 	int ini[SIZE * SIZE];
 
-	if (read_cells("../../../src/diehard_2474_0.txt", ini)) {
+	if (read_cells("./diehard_2474_0.txt", ini)) {
 		printf("ERROR initialize file read failed.\n");
 		return 1;
 	}
 
 	int exp[SIZE * SIZE];
 
-	if (read_cells("../../../src/diehard_2474_4.txt", exp)) {
+	if (read_cells("./diehard_2474_4.txt", exp)) {
 		printf("ERROR expected file read failed.\n");
 		return 1;
 	}
@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < SIZE * SIZE; i++) {
 		axis_data pkt;
 		pkt.data = ini[i];
-		//pkt.last = (i == SIZE * SIZE / 2 - 1 || i == SIZE * SIZE - 1) ? 1 : 0;
+		pkt.last = (i == SIZE * SIZE / 2 - 1 || i == SIZE * SIZE - 1) ? 1 : 0;
 		in.write(pkt);
 	}
 

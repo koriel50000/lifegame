@@ -1,0 +1,39 @@
+[
+  {
+    "directory": "E:\\workspace\\IntelliJ\\lifegame\\vitis",
+    "arguments": [
+      "D:\\Products\\Xilinx\\2025.2.1\\Vitis\\win64\\tools\\vcxx\\libexec\\clang++.exe",
+      "--sysroot=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\tps\\mingw\\10.0.0\\win64.o\\nt",
+      "-fhls",
+      "-hls-syn-headers-dir=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\common\\technology\\autopilot",
+      "-fhlstoplevel=lifegame",
+      "-c",
+      "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\lifegame.cpp"
+    ],
+    "file": "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\lifegame.cpp"
+  },
+  {
+    "directory": "E:\\workspace\\IntelliJ\\lifegame\\vitis",
+    "arguments": [
+      "D:\\Products\\Xilinx\\2025.2.1\\Vitis\\win64\\tools\\vcxx\\libexec\\clang++.exe",
+      "--sysroot=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\tps\\mingw\\10.0.0\\win64.o\\nt",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\include",
+      "-c",
+      "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\all_tests.cpp"
+    ],
+    "file": "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\all_tests.cpp"
+  },
+  {
+    "directory": "E:\\workspace\\IntelliJ\\lifegame\\vitis",
+    "arguments": [
+      "D:\\Products\\Xilinx\\2025.2.1\\Vitis\\win64\\tools\\vcxx\\libexec\\clang++.exe",
+      "--sysroot=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\tps\\mingw\\10.0.0\\win64.o\\nt",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=D:\\Products\\Xilinx\\2025.2.1\\Vitis\\include",
+      "-c",
+      "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\lifegame_tb.cpp"
+    ],
+    "file": "E:\\workspace\\IntelliJ\\lifegame\\vitis\\src\\lifegame_tb.cpp"
+  }
+]

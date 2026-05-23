@@ -1,6 +1,3 @@
-.vitis_hls_log_all.xml
-.apc/
-.settings/
-solution1/*
-!solution1/solution1.aps
-!solution1/solution1.directive
+.cache/
+.Xil/
+vitis/
